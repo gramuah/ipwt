@@ -28,7 +28,7 @@ You can find the file `init.caffemodel` in `$PROJECT_ROOT/deeplab_NYU/NYUdepth/m
 4. Finally we will extract the images from the .mat file we have downloaded. Under `PROJECT_ROOT/NYU_depth_v2` just run `ObtainImages.m`. Also, to overcome memory limitations, we will split the images in two halves with overlap. We can do that by running `SplitWholeDataset.m`
 
 
-### DEEPLAB BASED MODEL FOR IMAGE SEGMENTATION
+### IMAGE SEGMENTATION
 
 1. In order to use deeplab, let's compile the caffe framework. Run:
   ```
@@ -38,21 +38,21 @@ You can find the file `init.caffemodel` in `$PROJECT_ROOT/deeplab_NYU/NYUdepth/m
   make matcaffe
   ```
   
-2. Once the compilation has been successfully completed, just run
+2. Once the compilation has been successfully completed, run:
   ```
   $PROJECT_ROOT/deeplab_NYU
   python run_NYUdepth.py
   ```
-  to train or test a model. PLease, note that in the script there is a flag to choose between train or test. By default, we search in `$PROJECT_ROOT/deeplab_NYU/NYUdepth/model/resnet` for a .caffemodel to initialize the weigths of the network.
+  to train or test a model. Please, note that in the script there is a flag to choose between train or test. By default, we search in `$PROJECT_ROOT/deeplab_NYU/NYUdepth/model/resnet` for a .caffemodel to initialize the weights of the network in training and to find the model to use during testing.
   
-3. To visualize the results after the test has been completed, run `$PROJECT_ROOT/deeplab_NYU/matlab/my_script_NYUdepth/GetSegResults_Split.m` with do_save_results to '1'. We will need then to perform scene classification
+3. To visualize the results after the test has been completed, run `GetSegResults_Split.m` with do_save_results to '1' in `$PROJECT_ROOT/deeplab_NYU/matlab/my_script_NYUdepth`. We will need them to perform scene classification.
   
-4. To evaluate the results in different metrics run `$PROJECT_ROOT/deeplab_NYU/matlab/my_script_NYUdepth/Get_mIOU.m`
+4. To evaluate the results using different metrics run: `Get_mIOU.m` in `$PROJECT_ROOT/deeplab_NYU/matlab/my_script_NYUdepth`
 
 
-### PERFORMING SCENE CLASSIFICATION
+### SCENE CLASSIFICATION
 Once we have the results from our segmentation model:
 
 1. In `PROJECT_ROOT/NYU_depth_v2/NYU_depth/histograms`, run `Generate_histograms.m` to generate the histogram-like features from the segmented images. The code allows to choose the number of spatial pyramid levels.
   
-2. Under `PROJECT_ROOT/NYU_depth_v2/NYU_depth/code/SVM`, you can find the models used to perform scene classification with both a Linear SVM and an Additive Kernel SVM. You just need to run `run_SVM.m` or `run_addtive_SVM.m`.
+2. Under `PROJECT_ROOT/NYU_depth_v2/NYU_depth/code/SVM`, you can find the models used to perform scene classification with both a Linear SVM and an Additive Kernel SVM. You just need to run `run_SVM.m` or `run_addtive_SVM.m`
