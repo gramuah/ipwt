@@ -39,7 +39,7 @@ for ii = 1 : numel(dataset_dir)
                 '*.png'));
             
             if numel(imgs) > 0
-                save_dir = fullfile(save_path, [dataset_dir(ii).name, '_split2'], one_path_down_dir(jj).name);
+                save_dir = fullfile(save_path, [dataset_dir(ii).name, '_split'], one_path_down_dir(jj).name);
             
                 if ~exist(save_dir, 'dir')
                     mkdir(save_dir);
@@ -74,7 +74,7 @@ for ii = 1 : numel(dataset_dir)
                         
                         img_fn = [imgs(mm).name(1:end-4), sprintf('_pos%d', pos), '.png'];
                         
-                        save_fn = fullfile(save_path, [dataset_dir(ii).name, '_split2'], one_path_down_dir(jj).name, ...
+                        save_fn = fullfile(save_path, [dataset_dir(ii).name, '_split'], one_path_down_dir(jj).name, ...
                              img_fn);
                         imwrite(ims{pos+1}, save_fn);                        
                     end
