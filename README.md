@@ -14,7 +14,7 @@ There, we will have two folders:
   $PROJECT_ROOT/NYU_depth_v2
   ./Download_NYU_depth.sh
   ```
- The dataset is stored in a .mat file which is stored in `$PROJECT_ROOT/NYU_depth_v2/NYUdepth/code`.
+ The dataset is stored in a .mat file which is stored in `$PROJECT_ROOT/NYU_depth_v2/NYUdepth/code`
  
  3. Now, to download a pretrained model to initialize the network and the best of our models, run:
  
