@@ -1,4 +1,4 @@
-    load('./NYUdepth/code/nyu_depth_v2_labeled.mat');
+    load('./NYUdepth/nyu_depth_v2_labeled.mat');
 
     %%RGB images
     for i=1:size(rawRgbFilenames,1)
@@ -10,7 +10,7 @@
     end
     
     %%Annotations for 40 classes 
-    addpath(genpath('NYUdepth/code/indoor_scene_seg_sup'))
+    addpath(genpath('NYUdepth/indoor_scene_seg_sup'))
     for i=1:size(rawRgbFilenames,1)
         folder = fullfile('NYUdepth/Annotations40', strtok(rawRgbFilenames{i,1},'/'))
         if ~exist(folder, 'dir')

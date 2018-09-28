@@ -4,17 +4,18 @@ This repository includes the code to reproduce the experiments of our IROS 2018 
 ### DATASET AND INITIAL SETUP 
 
 1. In order to use this software, clone this repository. We will call that directory `PROJECT_ROOT`.
-There, we will have two folders:
+There, we will have three folders:
 
 - `PROJECT_ROOT/deeplab_NYU` contains the code needed to perform semantic segmentation. 
-- `PROJECT_ROOT/NYU_depth_v2` contains the NYU Depth v2 dataset and the code needed to perform scene classification as stated in the paper.
+- `PROJECT_ROOT/NYU_depth_v2` contains the NYU Depth v2 dataset
+- `PROJECT_ROOT/Classification` contains the code needed to perform scene classification as stated in the paper.
 
 2. First, lets download the NYU Depth v2 dataset. To do so, go to `PROJECT_ROOT/NYU_depth_v2` and run:
   ```
   $PROJECT_ROOT/NYU_depth_v2
   ./Download_NYU_depth.sh
   ```
- The dataset is stored in a .mat file which is stored in `$PROJECT_ROOT/NYU_depth_v2/NYUdepth/code`
+ The dataset is stored in a .mat file which is stored in `$PROJECT_ROOT/NYU_depth_v2/NYUdepth`
  
  3. Now, to download a pretrained model to initialize the network and the best of our models, run:
  
@@ -53,6 +54,6 @@ You can find the file `init.caffemodel` in `$PROJECT_ROOT/deeplab_NYU/NYUdepth/m
 ### SCENE CLASSIFICATION
 Once we have the results from our segmentation model:
 
-1. In `PROJECT_ROOT/NYU_depth_v2/NYU_depth/histograms`, run `Generate_histograms.m` to generate the histogram-like features from the segmented images. The code allows to choose the number of spatial pyramid levels.
+1. In `PROJECT_ROOT/Classification/histograms`, run `Generate_histograms.m` to generate the histogram-like features from the segmented images. The code allows to choose the number of spatial pyramid levels.
   
-2. Under `PROJECT_ROOT/NYU_depth_v2/NYU_depth/code/SVM`, you can find the models used to perform scene classification with both a Linear SVM and an Additive Kernel SVM. You just need to run `run_SVM.m` or `run_addtive_SVM.m`
+2. Under `PROJECT_ROOT/Classification/SVM`, you can find the models used to perform scene classification with both a Linear SVM and an Additive Kernel SVM. You just need to run `run_SVM.m` or `run_addtive_SVM.m`
