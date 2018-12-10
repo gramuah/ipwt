@@ -26,17 +26,18 @@ If you make use of this data and software, please cite the following reference i
 - `PROJECT_ROOT/Classification` contains the code needed to perform scene classification.
 
 2. Download the NYU Depth v2 dataset. To do so, go to `PROJECT_ROOT/NYU_depth_v2` and run the following script:
-  ```
+```Shell
   cd $PROJECT_ROOT/NYU_depth_v2
   ./Download_NYU_depth.sh
-  ```
+```
  The dataset is saved in a .mat file which is located in `$PROJECT_ROOT/NYU_depth_v2/NYUdepth`
  
 3. Now, to download a pretrained model to initialize the network and the best of our models, run: 
-   ```
+
+```Shell
    cd $PROJECT_ROOT/NYU_depth_v2
   ./Download_Models.sh
-  ``` 
+```
 You can find the file `init.caffemodel` in `$PROJECT_ROOT/deeplab_NYU/NYUdepth/model/resnet`. We will use that model to initialize the weights of the segmentation network. In `$PROJECT_ROOT/deeplab_NYU/NYUdepth/model/resnet/trained_model` you can find the final model used in our IROS 2018 paper.
 
 4. Finally we need to extract the images from the .mat file we have downloaded. Under `PROJECT_ROOT/NYU_depth_v2` just run the Matlab script `ObtainImages.m`. Also, to overcome memory limitations, we will split the images in two halves with overlap. We can do that by running `SplitWholeDataset.m`.
@@ -45,18 +46,18 @@ You can find the file `init.caffemodel` in `$PROJECT_ROOT/deeplab_NYU/NYUdepth/m
 ## Image Segmentation
 
 1. We need first to compile the DeepLab based model. Run:
-  ```
+```Shell
   cd $PROJECT_ROOT/deeplab_NYU
   make
   make pycaffe
   make matcaffe
-  ```
+```
   
 2. Once the compilation has been successfully completed, run:
-  ```
+```Shell
   cd $PROJECT_ROOT/deeplab_NYU
   python run_NYUdepth.py
-  ```
+```
   to train or test a model. Please, note that in the script there is a flag to choose between train or test. By default, we search in `$PROJECT_ROOT/deeplab_NYU/NYUdepth/model/resnet` for a .caffemodel to initialize the weights of the network in the training step, or to find the model to use during testing.
   
 3. To visualize the results after the test has been completed, run the Matlab script `GetSegResults_Split.m` with do_save_results to '1' in `$PROJECT_ROOT/deeplab_NYU/matlab/my_script_NYUdepth`. We will need these results to perform the scene classification task.
