@@ -32,13 +32,11 @@ If you make use of this data and software, please cite the following reference i
   ```
  The dataset is saved in a .mat file which is located in `$PROJECT_ROOT/NYU_depth_v2/NYUdepth`
  
-3. Now, to download a pretrained model to initialize the network and the best of our models, run:
- 
+3. Now, to download a pretrained model to initialize the network and the best of our models, run: 
    ```
    cd $PROJECT_ROOT/NYU_depth_v2
   ./Download_Models.sh
-  ```
-  
+  ``` 
 You can find the file `init.caffemodel` in `$PROJECT_ROOT/deeplab_NYU/NYUdepth/model/resnet`. We will use that model to initialize the weights of the segmentation network. In `$PROJECT_ROOT/deeplab_NYU/NYUdepth/model/resnet/trained_model` you can find the final model used in our IROS 2018 paper.
 
 4. Finally we need to extract the images from the .mat file we have downloaded. Under `PROJECT_ROOT/NYU_depth_v2` just run the Matlab script `ObtainImages.m`. Also, to overcome memory limitations, we will split the images in two halves with overlap. We can do that by running `SplitWholeDataset.m`.
